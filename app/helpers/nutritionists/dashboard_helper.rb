@@ -1,0 +1,2 @@
+module Nutritionists::DashboardHelper
+end

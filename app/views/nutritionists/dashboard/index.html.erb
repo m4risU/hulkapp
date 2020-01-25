@@ -1,2 +1,5 @@
-<h1>Nutritionists::Dashboard#index</h1>
-<p>Find me in app/views/nutritionists/dashboard/index.html.erb</p>
+<h1>Nutritionists Dashboard</h1>
+
+<%- @users.each do |user| %>
+<%= link_to "Impersonate #{user.email}", nutritionists_become_user_path(user) %>
+<% end %>

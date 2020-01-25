@@ -16,5 +16,6 @@ Rails.application.routes.draw do
 
   namespace :nutritionists do
     root to: 'dashboard#index'
+    get '/users/become/:id', to: 'users#become', as: :become_user
   end
 end

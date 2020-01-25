@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  # namespace :app do
+  #   get 'dashboard/index'
+  # end
   # namespace :nutritionists do
   #   get 'dashboard/index'
   # end
@@ -17,5 +20,10 @@ Rails.application.routes.draw do
   namespace :nutritionists do
     root to: 'dashboard#index'
     get '/users/become/:id', to: 'users#become', as: :become_user
+  end
+
+  namespace :app do
+    root to: 'dashboard#index'
+    resources :allergies, only: [:index]
   end
 end

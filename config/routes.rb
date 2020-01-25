@@ -24,6 +24,6 @@ Rails.application.routes.draw do
 
   namespace :app do
     root to: 'dashboard#index'
-    resources :allergies, only: [:index]
+    resources :allergies, only: [:index, :create]
   end
 end

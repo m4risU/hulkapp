@@ -10,7 +10,7 @@ class AddAllergies < ActiveRecord::Migration[6.0]
       ['Milk', 'milk'],
       ['Fish', 'fishr']
     ].each do |name, code|
-      IngredientCategory.create(name: name, code: code)
+      Allergy.create(name: name, code: code)
     end
   end
 end

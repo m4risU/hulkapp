@@ -1,0 +1,83 @@
+<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+  <a class="navbar-brand" href="#">Navbar</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+    <ul class="navbar-nav mr-auto">
+      <%# <li class="nav-item active">
+        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+      </li> %>
+      <%# <li class="nav-item">
+        <a class="nav-link" href="#">Link</a>
+      </li> %>
+      <%# <li class="nav-item">
+        <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+      </li> %>
+
+
+      <% if user_signed_in? %>
+        <li class="nav-item">
+          <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">
+          <%- if nutritionist_signed_in? %>
+            <%= current_nutritionist.email %>
+          <% end %>
+          Logged in as
+          </a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="dropdown02" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <%= current_user.email %>
+          </a>
+
+          <div class="dropdown-menu" aria-labelledby="dropdown02">
+            <%= link_to 'Edit profile', edit_user_registration_path, :class => 'dropdown-item' %> |
+            <%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'dropdown-item' %>
+          </div>
+        </li>
+      <% elsif nutritionist_signed_in? %>
+        <li class="nav-item">
+          <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">
+            Logged in as
+          </a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="dropdown03" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <%= current_nutritionist.email %>
+          </a>
+
+          <div class="dropdown-menu" aria-labelledby="dropdown03">
+            <%= link_to 'Edit profile', edit_nutritionist_registration_path, :class => 'dropdown-item' %> |
+            <%= link_to "Logout", destroy_nutritionist_session_path, method: :delete, :class => 'dropdown-item' %>
+          </div>
+        </li>
+      <% else %>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="dropdown04" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Nutritionists
+          </a>
+          <div class="dropdown-menu" aria-labelledby="dropdown04">
+            <%= link_to "Sign up", new_nutritionist_registration_path, :class => 'dropdown-item' %> |
+            <%= link_to "Login", new_nutritionist_session_path, :class => 'dropdown-item' %>
+          </div>
+        </li>
+        <li class="nav-item">
+          <%= link_to "Login", new_user_session_path, :class => 'nav-link' %>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">
+            or
+          </a>
+        </li>
+        <li class="nav-item">
+          <%= link_to "Sign up", new_user_registration_path, :class => 'nav-link' %>
+        </li>
+      <% end %>
+    </ul>
+    <form class="form-inline my-2 my-lg-0">
+      <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+    </form>
+  </div>
+</nav>

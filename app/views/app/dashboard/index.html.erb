@@ -1,2 +1,48 @@
-<h1>App::Dashboard#index</h1>
-<p>Find me in app/views/app/dashboard/index.html.erb</p>
+<hr>
+
+<div class="row">
+    <div class="list-group col-4">
+        <%= link_to 'Prev', app_root_path(date: @meal_plan.planned_for - 1.day), class: 'list-group-item list-group-item-action list-group-item-secondary' %>
+    </div>
+    <div class="list-group col-4">
+        <%= @meal_plan.planned_for.strftime('%A, %d %B %Y') %>
+    </div>
+    <div class="list-group col-4">
+        <%= link_to 'Next', app_root_path(date: @meal_plan.planned_for + 1.day), class: 'list-group-item list-group-item-action list-group-item-secondary' %>
+    </div>
+</div>
+<div class="row">
+    <div class="list-group col-4">
+
+    </div>
+    <div class="list-group col-4">
+        <%= link_to 'Today', app_root_path, class: 'list-group-item list-group-item-action list-group-item-secondary' %>
+    </div>
+    <div class="list-group col-4">
+        <%= link_to 'Clear', clear_app_meal_plan_path(@meal_plan), class: 'list-group-item list-group-item-action list-group-item-secondary' %>
+    </div>
+</div>
+<div class="row">
+  <div class="col-4">
+    <div class="list-group" id="list-tab" role="tablist">
+      <%- @meal_plan.meals.each_with_index do |meal, index| %>
+        <a class="list-group-item list-group-item-action <%= 'active' if index === 0 %>" id="list-profile-list" data-toggle="list" href="#list-meal-plan-<%= meal.id %>" role="tab" aria-controls="meal-plan-<%= meal.id %>">
+            <h4>#<%= index + 1 %></h4>
+        </a>
+      <% end %>
+      <%# <a class="list-group-item list-group-item-action active" id="list-home-list" data-toggle="list" href="#list-home" role="tab" aria-controls="home">Home</a>
+      <a class="list-group-item list-group-item-action" id="list-profile-list" data-toggle="list" href="#list-profile" role="tab" aria-controls="profile">Profile</a>
+      <a class="list-group-item list-group-item-action" id="list-messages-list" data-toggle="list" href="#list-messages" role="tab" aria-controls="messages">Messages</a>
+      <a class="list-group-item list-group-item-action" id="list-settings-list" data-toggle="list" href="#list-settings" role="tab" aria-controls="settings">Settings</a> %>
+    </div>
+  </div>
+  <div class="col-8">
+    <div class="tab-content" id="nav-tabContent">
+      <%- @meal_plan.meals.each_with_index do |meal, index| %>
+        <div class="tab-pane fade show <%= 'active' if index === 0 %>" id="list-meal-plan-<%= meal.id %>" role="tabpanel" aria-labelledby="list-meal-plan-<%= meal.id %>">
+            #<%= index + 1 %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

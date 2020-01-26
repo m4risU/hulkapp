@@ -29,6 +29,14 @@ Rails.application.routes.draw do
       member do
         get :clear
       end
+      resources :meals do
+        member do
+          get :add_ingredient_amount
+          get :default
+          get :search_ingredient
+        end
+        resources :ingredient_amounts
+      end
     end
   end
 end

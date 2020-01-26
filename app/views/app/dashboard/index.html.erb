@@ -40,7 +40,7 @@
     <div class="tab-content" id="nav-tabContent">
       <%- @meal_plan.meals.each_with_index do |meal, index| %>
         <div class="tab-pane fade show <%= 'active' if index === 0 %>" id="list-meal-plan-<%= meal.id %>" role="tabpanel" aria-labelledby="list-meal-plan-<%= meal.id %>">
-            #<%= index + 1 %>
+            <%= render partial: 'app/meals/meal', locals: { meal_plan: meal.meal_plan, meal: meal} %>
         </div>
       <% end %>
     </div>

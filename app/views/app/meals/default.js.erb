@@ -1,0 +1,1 @@
+$("#<%= dom_id(@meal) %>_control").html("<%= escape_javascript(render partial: 'app/meals/meal', locals: { meal_plan: @meal_plan, meal: @meal}) %>");

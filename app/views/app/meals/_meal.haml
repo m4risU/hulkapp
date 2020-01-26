@@ -1,0 +1,18 @@
+.container-fluid{ id: "#{dom_id(meal)}_control" }
+  - meal.ingredient_amounts.each do |amount|
+    .row
+      .col-xs-1
+      .col-xs-5
+        = amount.ingredient.name
+      .col-xs-2
+        = amount.amount
+        = amount.unit.name
+      .col-xs-4
+        = "#{amount.grams} g"
+      -# .col-xs-3
+        -# kcal
+  .row
+    .col-xs-1
+    .col-xs-11
+      = link_to 'Add ingredient', [:add_ingredient_amount, :app, meal_plan, meal], remote: true
+

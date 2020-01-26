@@ -1,0 +1,15 @@
+.container-fluid
+  = simple_form_for([:app, meal_plan, meal, ingredient_amount], remote: true) do |form|
+    .row
+      .col-xs-9
+        = form.input :ingredient_name
+        .results{ id: "#{ dom_id(@meal) }_ingredient_results" }
+        = form.input :ingredient_id, as: :hidden
+
+        = form.input :grams
+
+      .col-xs-3
+        = form.submit
+        = link_to 'Cancel', [:default, :app, @meal_plan, @meal], remote: true
+
+  %div{ id: "#{dom_id(@meal)}_ingredient_results" }

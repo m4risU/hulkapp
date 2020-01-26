@@ -1,0 +1,23 @@
+function delay(callback, ms) {
+  var timer = 0;
+  return function() {
+    var context = this, args = arguments;
+    clearTimeout(timer);
+    timer = setTimeout(function () {
+      callback.apply(context, args);
+    }, ms || 0);
+  };
+}
+
+$("#<%= dom_id(@meal) %>_control").html("<%= escape_javascript(render partial: 'app/meals/add_ingredient_amount', locals: { meal_plan: @meal_plan, meal: @meal, ingredient_amount: @ingredient_amount}) %>");
+
+$('input#ingredient_amount_ingredient_name').keyup(delay(function() {
+  var input_value = this.value
+  var url = "<%= url_for([:search_ingredient, :app, @meal_plan, @meal]) %>?query=" + encodeURIComponent(input_value)
+
+  $.get({
+    url: url
+  }).done(function(html) {
+    $("#<%= dom_id(@meal) %>_ingredient_results").html(html)
+  });
+}, 500));

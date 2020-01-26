@@ -6,4 +6,5 @@ class User < ApplicationRecord
 
   has_many :confirmed_allergies
   has_many :allergies, through: :confirmed_allergies
+  has_many :meal_plans
 end

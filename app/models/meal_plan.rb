@@ -4,7 +4,9 @@ class MealPlan < ApplicationRecord
   def prefill_meals
     if meals.none?
       5.times.each do
-        meals.create!
+        meal = meals.create!
+
+        2.times { meal.add_random_ingredient_amount }
       end
     end
   end

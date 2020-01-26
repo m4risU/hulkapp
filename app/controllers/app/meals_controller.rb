@@ -14,7 +14,7 @@ class App::MealsController < ApplicationController
 
   def search_ingredient
     @meal = Meal.find(params[:id])
-    @ingredients = Ingredient.by_tokens(params[:query])
+
     respond_to do |format|
       format.html { render layout: false }
       format.js {}

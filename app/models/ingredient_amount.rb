@@ -13,9 +13,9 @@ class IngredientAmount < ApplicationRecord
   private
   def verify_fields
     puts self.attributes
-    if ingredient_name.empty?
-      errors.add(:ingredient_name, 'select existing ingredient or type its name')
-    end
+    # if ingredient_name.empty?
+    #   errors.add(:ingredient_name, 'select existing ingredient or type its name')
+    # end
     if grams.nil?
       errors.add(:grams, 'add quantity of the kilocalories')
     else

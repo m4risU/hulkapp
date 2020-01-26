@@ -1,18 +1,70 @@
+%br
+
 .container-fluid{ id: "#{dom_id(meal)}_control" }
   - meal.ingredient_amounts.each do |amount|
     .row
-      .col-xs-1
-      .col-xs-5
-        = amount.ingredient.name
-      .col-xs-2
-        = amount.amount
-        = amount.unit.name
-      .col-xs-4
-        = "#{amount.grams} g"
-      -# .col-xs-3
-        -# kcal
-  .row
-    .col-xs-1
-    .col-xs-11
-      = link_to 'Add ingredient', [:add_ingredient_amount, :app, meal_plan, meal], remote: true
+      .col-xs-6
+        .row
+          .col-xs-4
+            chicken meat
+          .col-xs-4
+            150 g
+          .col-xs-4
+            420 kcal
+        .row
+          .col-xs-4
+            lemon letuce
+          .col-xs-4
+            200 g
+          .col-xs-4
+            50 kcal
+        .row
+          .col-xs-4
+            celery
+          .col-xs-4
+            100 g
+          .col-xs-4
+            75 kcal
+        .row
+          .col-xs-4
+            tomatoes
+          .col-xs-4
+            300 g
+          .col-xs-4
+            42 kcal
+        .row
+          .col-xs-4
+            garlic powder
+          .col-xs-4
+            10 g
+          .col-xs-4
+            12 kcal
+      .col-xs-6.container-fluid
+        .image
+          %img(src="https://dinnerthendessert.com/wp-content/uploads/2019/01/Classic-Chicken-Salad-2-688x459.jpg" width=200 height=100)
+    .row
+      .col-xs-12
+        .description
+          %ul
+            %li
+              In a large bowl, toss together shredded chicken, celery, onion, grapes, and almonds.
+            %li
+              Add in mayonnaise, lemon juice, mustard, salt, pepper, and garlic powder.
+            %li
+              Stir until well combined.
+            %li
+              Serve atop lettuce, tomatoes, or avocados or serve on sandwiches.
+
+    -# .row
+    -#   .col-xs-1
+    -#   .col-xs-5
+    -#     = amount.ingredient.name
+    -#   .col-xs-6
+    -#     = "#{amount.grams} g"
+    -#   -# .col-xs-3
+    -#     -# kcal
+  -# .row
+  -#   .col-xs-1
+  -#   .col-xs-11
+  -#     = link_to 'Add ingredient', [:add_ingredient_amount, :app, meal_plan, meal], remote: true
 

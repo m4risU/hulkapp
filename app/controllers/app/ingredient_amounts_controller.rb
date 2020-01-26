@@ -1,4 +1,4 @@
-class App::MealPlansController < ApplicationController
+class App::IngredientAmountsController < ApplicationController
   before_action :authenticate_user!
 
 
